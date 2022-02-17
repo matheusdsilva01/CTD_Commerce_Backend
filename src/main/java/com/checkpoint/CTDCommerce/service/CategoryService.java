@@ -1,7 +1,6 @@
 package com.checkpoint.CTDCommerce.service;
 
 import com.checkpoint.CTDCommerce.model.Category;
-import com.checkpoint.CTDCommerce.model.CategoryName;
 import com.checkpoint.CTDCommerce.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

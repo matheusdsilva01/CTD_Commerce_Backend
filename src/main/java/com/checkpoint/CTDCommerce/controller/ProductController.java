@@ -1,14 +1,10 @@
 package com.checkpoint.CTDCommerce.controller;
 
 import com.checkpoint.CTDCommerce.exceptions.BadRequestException;
-import com.checkpoint.CTDCommerce.model.Category;
 import com.checkpoint.CTDCommerce.model.Product;
-import com.checkpoint.CTDCommerce.service.CategoryService;
 import com.checkpoint.CTDCommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +26,10 @@ public class ProductController {
     public ResponseEntity<Product> postarProduto(@RequestBody Product product) throws BadRequestException {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(product));
     }
-
+    @PostMapping("/list")
+    public ResponseEntity<List<Product>> postarListaDeProdutos(@RequestBody List<Product> product) throws BadRequestException {
+        return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveListProducts(product));
+    }
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.findAll());
