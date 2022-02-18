@@ -35,7 +35,14 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public List<Product> saveListProducts(List<Product> products){
+    public List<Product> saveListProducts(List<Product> products) throws BadRequestException {
+        for(Product product : products) {
+            Category category = categoryService.findById(product.getCategory().getId());
+            if (category == null) {
+                throw new BadRequestException("Categoria não encontrada");
+            }
+            product.setCategory(category);
+        }
         return productRepository.saveAll(products);
     }
 

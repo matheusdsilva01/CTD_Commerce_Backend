@@ -26,10 +26,12 @@ public class ProductController {
     public ResponseEntity<Product> postarProduto(@RequestBody Product product) throws BadRequestException {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(product));
     }
+
     @PostMapping("/list")
     public ResponseEntity<List<Product>> postarListaDeProdutos(@RequestBody List<Product> product) throws BadRequestException {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveListProducts(product));
     }
+
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.findAll());
