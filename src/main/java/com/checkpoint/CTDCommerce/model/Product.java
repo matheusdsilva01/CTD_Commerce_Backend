@@ -30,7 +30,7 @@ public class Product {
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoriy_id")
+    @JoinColumn(name = "category_id")
     @JsonIgnoreProperties("products")
     private Category category;
 
